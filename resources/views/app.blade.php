@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="icon" type="image/x-icon" href="assets_main/img/logo.ico" />
 
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
@@ -18,12 +19,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{asset('/assets_main/css/styles.css')}}" rel="stylesheet" />
 
-  
-
     
-
-
-
     <!-- Scripts -->
     @routes
 
