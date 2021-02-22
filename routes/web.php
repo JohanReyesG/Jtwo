@@ -1,7 +1,11 @@
 <?php
 
+use App\Notifications\ContactNotification;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Notification ;
+
 use Inertia\Inertia;
 
 /*
@@ -28,3 +32,14 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
+Route::post('contact', function (Request $request) {
+    $request->validate([
+        'nombre' => 'required|regex:/^[\pL\s\-]+$/u',
+        'correo' => 'required|email',
+        'telefono' => 'required',
+        'mensaje' => 'required|max:400',
+
+    ]);
+    Notification::route('mail', 'jtwoweb.tk@gmail.com')->notify(new ContactNotification($request));
+    return $request;
+});

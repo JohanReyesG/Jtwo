@@ -37,7 +37,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#contact">
-                                Contacnos
+                                Contáctanos
                             </a>
                         </li>
 
@@ -209,7 +209,7 @@
         <section class="page-section" id="about">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase" style="color: white">Conocenos</h2>
+                    <h2 class="section-heading text-uppercase" style="color: white">Conócenos</h2>
                     <h3 class="section-subheading text-muted" style="color: white">El recorrido de nuestra historia.</h3>
                 </div>
                 <ul class="timeline">
@@ -283,8 +283,8 @@
                             <a class="btn btn-dark btn-social mx-2" href="https://github.com/JohanReyesG" target="_blank">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://api.whatsapp.com/send?phone=573212063928&text=¡Hola !" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/johan-arley-reyes-grimaldos-22591b1a3/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <!-- <div class="col-lg-4">
@@ -342,44 +342,54 @@
         <section class="page-section" id="contact">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Contactanos</h2>
+                    <h2 class="section-heading text-uppercase">Contactános</h2>
                     <h3 class="section-subheading " style="color: white;">POR FAVOR, LLENA ESTE FORMULARIO PARA PONERNOS EN CONTACTO CONTIGO.</h3>
                 </div>
-                <form id="contactForm" name="sentMessage" novalidate="novalidate">
+                <form>
                     <div class="row align-items-stretch mb-5">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input class="form-control" id="name" type="text" placeholder="Tu Nombre *" required="required" data-validation-required-message="Porfavor ingresa tu nombre" />
+                                <input class="form-control" id="name" v-model="name" type="text" placeholder="Tu Nombre *" required="required"  />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" id="email" type="email" placeholder="Tu Email *" required="required" data-validation-required-message="Porfavor ingresa tu correo electronico." />
+                                <input class="form-control" id="email" type="email" v-model="email" placeholder="Tu Email *" required="required"/>
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="form-group mb-md-0">
-                                <input class="form-control" id="phone" type="tel" placeholder="Tu  Telefono *" required="required" data-validation-required-message="Porfavor ingresa tu numero de telefono." />
+                                <input class="form-control" id="phone" type="text" v-model="phone" placeholder="Tu  Telefono *" required="required"  />
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group form-group-textarea mb-md-0">
-                                <textarea class="form-control" id="message" placeholder="Tu Mensaje *" required="required" data-validation-required-message="Porfavor escribe tu mensaje."></textarea>
+                                <textarea class="form-control" id="message" v-model="message" rows="5" placeholder="Tu Mensaje *" required="required" ></textarea>
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                     </div>
                     <div class="text-center">
                         <div id="success"></div>
-                        <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Enviar mensaje</button>
+                        <button class="btn btn-primary btn-xl text-uppercase" id="btn-send" @click="contact"  type="submit">Enviar</button>
+                    <div v-if="loading" class="lds-ripple"><div></div><div></div></div>
+
                     </div>
                 </form>
+                <p class="ok" v-if="loading">Enviando, espera...</p>   
+                <p class="ok" v-if="sent">Enviado, gracias por contactarte.</p>   
+                <ul style="color:red;" v-for="error in errors.errors">
+                <li class="required">{{ error[0] }}</li>
+              </ul>
             </div>
         </section>
+        <div class="whatsapp-icon">
+            <a href="https://api.whatsapp.com/send?phone=573212063928&text=¡Hola !" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
         <!-- Footer-->
         <footer class="footer py-4" style="color:white;">
             <div class="container">
                 <div class="row align-items-center" >
-                    <div class="col-lg-4 text-lg-left">Copyright © <span class="nombre ">jtwo.tk</span> 2020-2021</div>
+                    <div class="col-lg-4 text-lg-left">Copyright © <span class="nombre ">JTwoWeb.tk</span> 2020-2021</div>
                     <div class="col-lg-4 my-3 my-lg-0">
                         <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
@@ -583,10 +593,71 @@ export default {
     laravelVersion: String,
     phpVersion: String,
   },
+  data() {
+      return {
+          name:'',
+          email:'',
+          phone:'',
+          message:'',
+          errors:[],
+          loading:false,
+          sent:false
+
+      }
+  },
+  methods:{
+      contact(){
+          this.errors=[];
+          this.sent=false;
+          this.loading=true;
+
+              document.getElementById('btn-send').classList.add("disabled");
+
+          axios.post('/contact',{
+              nombre:this.name,
+              correo:this.email,
+              telefono:this.phone,
+              mensaje:this.message,
+          }).then((reponse)=>{
+              document.getElementById('btn-send').classList.remove("disabled");
+
+              this.errors=[];
+              this.name='';
+              this.email='';
+              this.phone='';
+              this.message='';
+              this.sent=true;
+              this.loading=false;
+          }).catch((err)=>{
+              this.loading=false;
+              this.sent=false;
+
+              document.getElementById('btn-send').classList.remove("disabled");
+
+              this.errors=err.response.data;
+              console.log(this.errors);
+          })
+      }
+  }
 };
 </script>
 
 <style scoped>
+.whatsapp-icon{
+    background: rgb(7, 223, 7);
+    position: fixed;
+    z-index: 99999999999;
+    bottom: 25px;
+    border-radius: 50%;
+    font-size: 2.4em;
+    padding: 4px 16px;
+    color: white;
+    right: 36px;
+    cursor: pointer;
+}
+.whatsapp-icon svg{
+    color: white;
+}
 .bg-gray-100 {
   background-color: #f7fafc;
   background-color: rgba(247, 250, 252, var(--tw-bg-opacity));
@@ -648,6 +719,44 @@ export default {
     color: rgba(203, 213, 224, var(--tw-text-opacity));
   }
 }
+.ok{
+    color: rgb(0, 182, 0);
+    text-align: center;
+}
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid #fff;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
+}
+
+
 </style>
 
 

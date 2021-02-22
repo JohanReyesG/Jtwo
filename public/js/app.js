@@ -17990,6 +17990,48 @@ __webpack_require__.r(__webpack_exports__);
     canRegister: Boolean,
     laravelVersion: String,
     phpVersion: String
+  },
+  data: function data() {
+    return {
+      name: '',
+      email: '',
+      phone: '',
+      message: '',
+      errors: [],
+      loading: false,
+      sent: false
+    };
+  },
+  methods: {
+    contact: function contact() {
+      var _this = this;
+
+      this.errors = [];
+      this.sent = false;
+      this.loading = true;
+      document.getElementById('btn-send').classList.add("disabled");
+      axios.post('/contact', {
+        nombre: this.name,
+        correo: this.email,
+        telefono: this.phone,
+        mensaje: this.message
+      }).then(function (reponse) {
+        document.getElementById('btn-send').classList.remove("disabled");
+        _this.errors = [];
+        _this.name = '';
+        _this.email = '';
+        _this.phone = '';
+        _this.message = '';
+        _this.sent = true;
+        _this.loading = false;
+      })["catch"](function (err) {
+        _this.loading = false;
+        _this.sent = false;
+        document.getElementById('btn-send').classList.remove("disabled");
+        _this.errors = err.response.data;
+        console.log(_this.errors);
+      });
+    }
   }
 });
 
@@ -22011,7 +22053,7 @@ var _hoisted_6 = {
   "class": "navbar-nav text-uppercase ml-auto"
 };
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<li class=\"nav-item\" data-v-317d1a6e><a class=\"nav-link js-scroll-trigger\" href=\"#services\" data-v-317d1a6e> Servicios </a></li><li class=\"nav-item\" data-v-317d1a6e><a class=\"nav-link js-scroll-trigger\" href=\"#portfolio\" data-v-317d1a6e> Portfolio </a></li><li class=\"nav-item\" data-v-317d1a6e><a class=\"nav-link js-scroll-trigger\" href=\"#about\" data-v-317d1a6e> Nosotros </a></li><li class=\"nav-item\" data-v-317d1a6e><a class=\"nav-link js-scroll-trigger\" href=\"#team\" data-v-317d1a6e> Equipo </a></li><li class=\"nav-item\" data-v-317d1a6e><a class=\"nav-link js-scroll-trigger\" href=\"#contact\" data-v-317d1a6e> Contacnos </a></li>", 5);
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<li class=\"nav-item\" data-v-317d1a6e><a class=\"nav-link js-scroll-trigger\" href=\"#services\" data-v-317d1a6e> Servicios </a></li><li class=\"nav-item\" data-v-317d1a6e><a class=\"nav-link js-scroll-trigger\" href=\"#portfolio\" data-v-317d1a6e> Portfolio </a></li><li class=\"nav-item\" data-v-317d1a6e><a class=\"nav-link js-scroll-trigger\" href=\"#about\" data-v-317d1a6e> Nosotros </a></li><li class=\"nav-item\" data-v-317d1a6e><a class=\"nav-link js-scroll-trigger\" href=\"#team\" data-v-317d1a6e> Equipo </a></li><li class=\"nav-item\" data-v-317d1a6e><a class=\"nav-link js-scroll-trigger\" href=\"#contact\" data-v-317d1a6e> Contáctanos </a></li>", 5);
 
 var _hoisted_12 = {
   "class": "nav-item"
@@ -22025,17 +22067,136 @@ var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticV
 
 var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section class=\"page-section bg-light\" id=\"portfolio\" data-v-317d1a6e><div class=\"container\" data-v-317d1a6e><div class=\"text-center\" style=\"color:black;\" data-v-317d1a6e><h2 class=\"section-heading text-uppercase\" data-v-317d1a6e>Tecnologías, Herramientas y lenguajes utilizados</h2><h3 class=\"section-subheading text-muted\" data-v-317d1a6e>Lorem ipsum dolor sit amet consectetur.</h3></div><div class=\"row\" data-v-317d1a6e><div class=\"col-lg-4 col-sm-6 mb-4\" data-v-317d1a6e><div class=\"portfolio-item\" data-v-317d1a6e><a class=\"portfolio-link\" data-toggle=\"modal\" href=\"#portfolioModal1\" data-v-317d1a6e><div class=\"portfolio-hover\" data-v-317d1a6e><div class=\"portfolio-hover-content\" data-v-317d1a6e><i class=\"fas fa-plus fa-3x\" data-v-317d1a6e></i></div></div><img class=\"img-fluid\" src=\"assets_main/img/portfolio/01-thumbnail.jpg\" alt=\"\" data-v-317d1a6e></a><div class=\"portfolio-caption\" data-v-317d1a6e><div class=\"portfolio-caption-heading\" data-v-317d1a6e>Threads</div><div class=\"portfolio-caption-subheading text-muted\" data-v-317d1a6e>Illustration</div></div></div></div><div class=\"col-lg-4 col-sm-6 mb-4\" data-v-317d1a6e><div class=\"portfolio-item\" data-v-317d1a6e><a class=\"portfolio-link\" data-toggle=\"modal\" href=\"#portfolioModal2\" data-v-317d1a6e><div class=\"portfolio-hover\" data-v-317d1a6e><div class=\"portfolio-hover-content\" data-v-317d1a6e><i class=\"fas fa-plus fa-3x\" data-v-317d1a6e></i></div></div><img class=\"img-fluid\" src=\"assets_main/img/portfolio/02-thumbnail.jpg\" alt=\"\" data-v-317d1a6e></a><div class=\"portfolio-caption\" data-v-317d1a6e><div class=\"portfolio-caption-heading\" data-v-317d1a6e>Explore</div><div class=\"portfolio-caption-subheading text-muted\" data-v-317d1a6e>Graphic Design</div></div></div></div><div class=\"col-lg-4 col-sm-6 mb-4\" data-v-317d1a6e><div class=\"portfolio-item\" data-v-317d1a6e><a class=\"portfolio-link\" data-toggle=\"modal\" href=\"#portfolioModal3\" data-v-317d1a6e><div class=\"portfolio-hover\" data-v-317d1a6e><div class=\"portfolio-hover-content\" data-v-317d1a6e><i class=\"fas fa-plus fa-3x\" data-v-317d1a6e></i></div></div><img class=\"img-fluid\" src=\"assets_main/img/portfolio/03-thumbnail.jpg\" alt=\"\" data-v-317d1a6e></a><div class=\"portfolio-caption\" data-v-317d1a6e><div class=\"portfolio-caption-heading\" data-v-317d1a6e>Finish</div><div class=\"portfolio-caption-subheading text-muted\" data-v-317d1a6e>Identity</div></div></div></div><div class=\"col-lg-4 col-sm-6 mb-4 mb-lg-0\" data-v-317d1a6e><div class=\"portfolio-item\" data-v-317d1a6e><a class=\"portfolio-link\" data-toggle=\"modal\" href=\"#portfolioModal4\" data-v-317d1a6e><div class=\"portfolio-hover\" data-v-317d1a6e><div class=\"portfolio-hover-content\" data-v-317d1a6e><i class=\"fas fa-plus fa-3x\" data-v-317d1a6e></i></div></div><img class=\"img-fluid\" src=\"assets_main/img/portfolio/04-thumbnail.jpg\" alt=\"\" data-v-317d1a6e></a><div class=\"portfolio-caption\" data-v-317d1a6e><div class=\"portfolio-caption-heading\" data-v-317d1a6e>Lines</div><div class=\"portfolio-caption-subheading text-muted\" data-v-317d1a6e>Branding</div></div></div></div><div class=\"col-lg-4 col-sm-6 mb-4 mb-sm-0\" data-v-317d1a6e><div class=\"portfolio-item\" data-v-317d1a6e><a class=\"portfolio-link\" data-toggle=\"modal\" href=\"#portfolioModal5\" data-v-317d1a6e><div class=\"portfolio-hover\" data-v-317d1a6e><div class=\"portfolio-hover-content\" data-v-317d1a6e><i class=\"fas fa-plus fa-3x\" data-v-317d1a6e></i></div></div><img class=\"img-fluid\" src=\"assets_main/img/portfolio/05-thumbnail.jpg\" alt=\"\" data-v-317d1a6e></a><div class=\"portfolio-caption\" data-v-317d1a6e><div class=\"portfolio-caption-heading\" data-v-317d1a6e>Southwest</div><div class=\"portfolio-caption-subheading text-muted\" data-v-317d1a6e>Website Design</div></div></div></div><div class=\"col-lg-4 col-sm-6\" data-v-317d1a6e><div class=\"portfolio-item\" data-v-317d1a6e><a class=\"portfolio-link\" data-toggle=\"modal\" href=\"#portfolioModal6\" data-v-317d1a6e><div class=\"portfolio-hover\" data-v-317d1a6e><div class=\"portfolio-hover-content\" data-v-317d1a6e><i class=\"fas fa-plus fa-3x\" data-v-317d1a6e></i></div></div><img class=\"img-fluid\" src=\"assets_main/img/portfolio/06-thumbnail.jpg\" alt=\"\" data-v-317d1a6e></a><div class=\"portfolio-caption\" data-v-317d1a6e><div class=\"portfolio-caption-heading\" data-v-317d1a6e>Window</div><div class=\"portfolio-caption-subheading text-muted\" data-v-317d1a6e>Photography</div></div></div></div></div></div></section>", 1);
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section class=\"page-section\" id=\"about\" data-v-317d1a6e><div class=\"container\" data-v-317d1a6e><div class=\"text-center\" data-v-317d1a6e><h2 class=\"section-heading text-uppercase\" style=\"color:white;\" data-v-317d1a6e>Conocenos</h2><h3 class=\"section-subheading text-muted\" style=\"color:white;\" data-v-317d1a6e>El recorrido de nuestra historia.</h3></div><ul class=\"timeline\" data-v-317d1a6e><li data-v-317d1a6e><div class=\"timeline-image\" data-v-317d1a6e><img class=\"rounded-circle img-fluid\" src=\"assets_main/img/about/1.jpg\" alt=\"\" data-v-317d1a6e></div><div class=\"timeline-panel\" data-v-317d1a6e><div class=\"timeline-heading\" data-v-317d1a6e><h4 data-v-317d1a6e>20018-2020</h4><h4 class=\"subheading\" data-v-317d1a6e>Tiempo de formacion</h4></div><div class=\"timeline-body\" data-v-317d1a6e><p class=\"text-muted\" data-v-317d1a6e>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div></div></li><li class=\"timeline-inverted\" data-v-317d1a6e><div class=\"timeline-image\" data-v-317d1a6e><img class=\"rounded-circle img-fluid\" src=\"assets_main/img/about/2.jpg\" alt=\"\" data-v-317d1a6e></div><div class=\"timeline-panel\" data-v-317d1a6e><div class=\"timeline-heading\" data-v-317d1a6e><h4 data-v-317d1a6e>March 2011</h4><h4 class=\"subheading\" data-v-317d1a6e>An Agency is Born</h4></div><div class=\"timeline-body\" data-v-317d1a6e><p class=\"text-muted\" data-v-317d1a6e>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div></div></li><li data-v-317d1a6e><div class=\"timeline-image\" data-v-317d1a6e><img class=\"rounded-circle img-fluid\" src=\"assets_main/img/about/3.jpg\" alt=\"\" data-v-317d1a6e></div><div class=\"timeline-panel\" data-v-317d1a6e><div class=\"timeline-heading\" data-v-317d1a6e><h4 data-v-317d1a6e>December 2012</h4><h4 class=\"subheading\" data-v-317d1a6e>Transition to Full Service</h4></div><div class=\"timeline-body\" data-v-317d1a6e><p class=\"text-muted\" data-v-317d1a6e>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div></div></li><li class=\"timeline-inverted\" data-v-317d1a6e><div class=\"timeline-image\" data-v-317d1a6e><img class=\"rounded-circle img-fluid\" src=\"assets_main/img/about/4.jpg\" alt=\"\" data-v-317d1a6e></div><div class=\"timeline-panel\" data-v-317d1a6e><div class=\"timeline-heading\" data-v-317d1a6e><h4 data-v-317d1a6e>July 2014</h4><h4 class=\"subheading\" data-v-317d1a6e>Phase Two Expansion</h4></div><div class=\"timeline-body\" data-v-317d1a6e><p class=\"text-muted\" data-v-317d1a6e>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div></div></li><li class=\"timeline-inverted\" data-v-317d1a6e><div class=\"timeline-image\" data-v-317d1a6e><h4 data-v-317d1a6e> Se Parte <br data-v-317d1a6e> de Nuestra <br data-v-317d1a6e> Historia! </h4></div></li></ul></div></section>", 1);
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section class=\"page-section\" id=\"about\" data-v-317d1a6e><div class=\"container\" data-v-317d1a6e><div class=\"text-center\" data-v-317d1a6e><h2 class=\"section-heading text-uppercase\" style=\"color:white;\" data-v-317d1a6e>Conócenos</h2><h3 class=\"section-subheading text-muted\" style=\"color:white;\" data-v-317d1a6e>El recorrido de nuestra historia.</h3></div><ul class=\"timeline\" data-v-317d1a6e><li data-v-317d1a6e><div class=\"timeline-image\" data-v-317d1a6e><img class=\"rounded-circle img-fluid\" src=\"assets_main/img/about/1.jpg\" alt=\"\" data-v-317d1a6e></div><div class=\"timeline-panel\" data-v-317d1a6e><div class=\"timeline-heading\" data-v-317d1a6e><h4 data-v-317d1a6e>20018-2020</h4><h4 class=\"subheading\" data-v-317d1a6e>Tiempo de formacion</h4></div><div class=\"timeline-body\" data-v-317d1a6e><p class=\"text-muted\" data-v-317d1a6e>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div></div></li><li class=\"timeline-inverted\" data-v-317d1a6e><div class=\"timeline-image\" data-v-317d1a6e><img class=\"rounded-circle img-fluid\" src=\"assets_main/img/about/2.jpg\" alt=\"\" data-v-317d1a6e></div><div class=\"timeline-panel\" data-v-317d1a6e><div class=\"timeline-heading\" data-v-317d1a6e><h4 data-v-317d1a6e>March 2011</h4><h4 class=\"subheading\" data-v-317d1a6e>An Agency is Born</h4></div><div class=\"timeline-body\" data-v-317d1a6e><p class=\"text-muted\" data-v-317d1a6e>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div></div></li><li data-v-317d1a6e><div class=\"timeline-image\" data-v-317d1a6e><img class=\"rounded-circle img-fluid\" src=\"assets_main/img/about/3.jpg\" alt=\"\" data-v-317d1a6e></div><div class=\"timeline-panel\" data-v-317d1a6e><div class=\"timeline-heading\" data-v-317d1a6e><h4 data-v-317d1a6e>December 2012</h4><h4 class=\"subheading\" data-v-317d1a6e>Transition to Full Service</h4></div><div class=\"timeline-body\" data-v-317d1a6e><p class=\"text-muted\" data-v-317d1a6e>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div></div></li><li class=\"timeline-inverted\" data-v-317d1a6e><div class=\"timeline-image\" data-v-317d1a6e><img class=\"rounded-circle img-fluid\" src=\"assets_main/img/about/4.jpg\" alt=\"\" data-v-317d1a6e></div><div class=\"timeline-panel\" data-v-317d1a6e><div class=\"timeline-heading\" data-v-317d1a6e><h4 data-v-317d1a6e>July 2014</h4><h4 class=\"subheading\" data-v-317d1a6e>Phase Two Expansion</h4></div><div class=\"timeline-body\" data-v-317d1a6e><p class=\"text-muted\" data-v-317d1a6e>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div></div></li><li class=\"timeline-inverted\" data-v-317d1a6e><div class=\"timeline-image\" data-v-317d1a6e><h4 data-v-317d1a6e> Se Parte <br data-v-317d1a6e> de Nuestra <br data-v-317d1a6e> Historia! </h4></div></li></ul></div></section>", 1);
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section class=\"page-section bg-light\" id=\"team\" data-v-317d1a6e><div class=\"container\" data-v-317d1a6e><div class=\"text-center\" style=\"color:black;\" data-v-317d1a6e><h2 class=\"section-heading text-uppercase\" data-v-317d1a6e>Nuestro equipo de trabajo</h2><h3 class=\"section-subheading text-muted\" data-v-317d1a6e>Apasinados por lo que hacemos.</h3></div><div class=\"row\" data-v-317d1a6e><div class=\"col-lg-6\" data-v-317d1a6e><div class=\"team-member\" data-v-317d1a6e><img class=\"mx-auto rounded-circle\" src=\"assets_main/img/team/2.png\" alt=\"\" data-v-317d1a6e><h4 style=\"color:black;\" data-v-317d1a6e>Johan Reyes</h4><p class=\"text-muted\" data-v-317d1a6e>Ingeniero de sistemas</p><a class=\"btn btn-dark btn-social mx-2\" href=\"https://github.com/JohanReyesG\" target=\"_blank\" data-v-317d1a6e><i class=\"fab fa-github\" data-v-317d1a6e></i></a><a class=\"btn btn-dark btn-social mx-2\" href=\"#!\" data-v-317d1a6e><i class=\"fab fa-facebook-f\" data-v-317d1a6e></i></a><a class=\"btn btn-dark btn-social mx-2\" href=\"#!\" data-v-317d1a6e><i class=\"fab fa-linkedin-in\" data-v-317d1a6e></i></a></div></div><!-- &lt;div class=&quot;col-lg-4&quot;&gt;\r\n                        &lt;div class=&quot;team-member&quot;&gt;\r\n                            &lt;img class=&quot;mx-auto rounded-circle&quot; src=&quot;assets_main/img/team/1.jpg&quot; alt=&quot;&quot; /&gt;\r\n                            &lt;h4 style=&quot;color: black&quot;&gt;Lady Avila&lt;/h4&gt;\r\n                            &lt;p class=&quot;text-muted&quot;&gt;Diseñadora Web&lt;/p&gt;\r\n                            &lt;a class=&quot;btn btn-dark btn-social mx-2&quot; href=&quot;#!&quot;&gt;&lt;i class=&quot;fab fa-twitter&quot;&gt;&lt;/i&gt;&lt;/a&gt;\r\n                            &lt;a class=&quot;btn btn-dark btn-social mx-2&quot; href=&quot;#!&quot;&gt;&lt;i class=&quot;fab fa-facebook-f&quot;&gt;&lt;/i&gt;&lt;/a&gt;\r\n                            &lt;a class=&quot;btn btn-dark btn-social mx-2&quot; href=&quot;#!&quot;&gt;&lt;i class=&quot;fab fa-linkedin-in&quot;&gt;&lt;/i&gt;&lt;/a&gt;\r\n                        &lt;/div&gt;\r\n                    &lt;/div&gt; --><div class=\"col-lg-6\" data-v-317d1a6e><div class=\"team-member\" data-v-317d1a6e><img class=\"mx-auto rounded-circle\" src=\"assets_main/img/team/Johann.jpg\" alt=\"\" data-v-317d1a6e><h4 style=\"color:black;\" data-v-317d1a6e>Johann Ramirez</h4><p class=\"text-muted\" data-v-317d1a6e>Ingeniero de software</p><a class=\"btn btn-dark btn-social mx-2\" href=\"https://github.com/johannDevFull\" target=\"_blank\" data-v-317d1a6e><i class=\"fab fa-github\" data-v-317d1a6e></i></a><a class=\"btn btn-dark btn-social mx-2\" href=\"https://m.facebook.com/profile.php?id=100000306092078\" target=\"_blank\" data-v-317d1a6e><i class=\"fab fa-facebook-f\" data-v-317d1a6e></i></a><a class=\"btn btn-dark btn-social mx-2\" href=\"#!\" target=\"_blank\" data-v-317d1a6e><i class=\"fab fa-linkedin-in\" data-v-317d1a6e></i></a></div></div></div><div class=\"row\" data-v-317d1a6e><div class=\"col-lg-8 mx-auto text-center\" data-v-317d1a6e><p class=\"large text-muted\" data-v-317d1a6e>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div></div></div></section>", 1);
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section class=\"page-section bg-light\" id=\"team\" data-v-317d1a6e><div class=\"container\" data-v-317d1a6e><div class=\"text-center\" style=\"color:black;\" data-v-317d1a6e><h2 class=\"section-heading text-uppercase\" data-v-317d1a6e>Nuestro equipo de trabajo</h2><h3 class=\"section-subheading text-muted\" data-v-317d1a6e>Apasinados por lo que hacemos.</h3></div><div class=\"row\" data-v-317d1a6e><div class=\"col-lg-6\" data-v-317d1a6e><div class=\"team-member\" data-v-317d1a6e><img class=\"mx-auto rounded-circle\" src=\"assets_main/img/team/2.png\" alt=\"\" data-v-317d1a6e><h4 style=\"color:black;\" data-v-317d1a6e>Johan Reyes</h4><p class=\"text-muted\" data-v-317d1a6e>Ingeniero de sistemas</p><a class=\"btn btn-dark btn-social mx-2\" href=\"https://github.com/JohanReyesG\" target=\"_blank\" data-v-317d1a6e><i class=\"fab fa-github\" data-v-317d1a6e></i></a><a class=\"btn btn-dark btn-social mx-2\" href=\"https://api.whatsapp.com/send?phone=573212063928&amp;text=¡Hola !\" target=\"_blank\" data-v-317d1a6e><i class=\"fab fa-whatsapp\" data-v-317d1a6e></i></a><a class=\"btn btn-dark btn-social mx-2\" href=\"https://www.linkedin.com/in/johan-arley-reyes-grimaldos-22591b1a3/\" target=\"_blank\" data-v-317d1a6e><i class=\"fab fa-linkedin-in\" data-v-317d1a6e></i></a></div></div><!-- &lt;div class=&quot;col-lg-4&quot;&gt;\r\n                        &lt;div class=&quot;team-member&quot;&gt;\r\n                            &lt;img class=&quot;mx-auto rounded-circle&quot; src=&quot;assets_main/img/team/1.jpg&quot; alt=&quot;&quot; /&gt;\r\n                            &lt;h4 style=&quot;color: black&quot;&gt;Lady Avila&lt;/h4&gt;\r\n                            &lt;p class=&quot;text-muted&quot;&gt;Diseñadora Web&lt;/p&gt;\r\n                            &lt;a class=&quot;btn btn-dark btn-social mx-2&quot; href=&quot;#!&quot;&gt;&lt;i class=&quot;fab fa-twitter&quot;&gt;&lt;/i&gt;&lt;/a&gt;\r\n                            &lt;a class=&quot;btn btn-dark btn-social mx-2&quot; href=&quot;#!&quot;&gt;&lt;i class=&quot;fab fa-facebook-f&quot;&gt;&lt;/i&gt;&lt;/a&gt;\r\n                            &lt;a class=&quot;btn btn-dark btn-social mx-2&quot; href=&quot;#!&quot;&gt;&lt;i class=&quot;fab fa-linkedin-in&quot;&gt;&lt;/i&gt;&lt;/a&gt;\r\n                        &lt;/div&gt;\r\n                    &lt;/div&gt; --><div class=\"col-lg-6\" data-v-317d1a6e><div class=\"team-member\" data-v-317d1a6e><img class=\"mx-auto rounded-circle\" src=\"assets_main/img/team/Johann.jpg\" alt=\"\" data-v-317d1a6e><h4 style=\"color:black;\" data-v-317d1a6e>Johann Ramirez</h4><p class=\"text-muted\" data-v-317d1a6e>Ingeniero de software</p><a class=\"btn btn-dark btn-social mx-2\" href=\"https://github.com/johannDevFull\" target=\"_blank\" data-v-317d1a6e><i class=\"fab fa-github\" data-v-317d1a6e></i></a><a class=\"btn btn-dark btn-social mx-2\" href=\"https://m.facebook.com/profile.php?id=100000306092078\" target=\"_blank\" data-v-317d1a6e><i class=\"fab fa-facebook-f\" data-v-317d1a6e></i></a><a class=\"btn btn-dark btn-social mx-2\" href=\"#!\" target=\"_blank\" data-v-317d1a6e><i class=\"fab fa-linkedin-in\" data-v-317d1a6e></i></a></div></div></div><div class=\"row\" data-v-317d1a6e><div class=\"col-lg-8 mx-auto text-center\" data-v-317d1a6e><p class=\"large text-muted\" data-v-317d1a6e>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div></div></div></section>", 1);
 
 var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"py-5\" data-v-317d1a6e><div class=\"container\" data-v-317d1a6e><div class=\"row\" data-v-317d1a6e><div class=\"col-md-3 col-sm-6 my-3\" data-v-317d1a6e><a href=\"#!\" data-v-317d1a6e><img class=\"img-fluid d-block mx-auto\" src=\"assets_main/img/logos/envato.jpg\" alt=\"\" data-v-317d1a6e></a></div><div class=\"col-md-3 col-sm-6 my-3\" data-v-317d1a6e><a href=\"#!\" data-v-317d1a6e><img class=\"img-fluid d-block mx-auto\" src=\"assets_main/img/logos/designmodo.jpg\" alt=\"\" data-v-317d1a6e></a></div><div class=\"col-md-3 col-sm-6 my-3\" data-v-317d1a6e><a href=\"#!\" data-v-317d1a6e><img class=\"img-fluid d-block mx-auto\" src=\"assets_main/img/logos/themeforest.jpg\" alt=\"\" data-v-317d1a6e></a></div><div class=\"col-md-3 col-sm-6 my-3\" data-v-317d1a6e><a href=\"#!\" data-v-317d1a6e><img class=\"img-fluid d-block mx-auto\" src=\"assets_main/img/logos/creative-market.jpg\" alt=\"\" data-v-317d1a6e></a></div></div></div></div>", 1);
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section class=\"page-section\" id=\"contact\" data-v-317d1a6e><div class=\"container\" data-v-317d1a6e><div class=\"text-center\" data-v-317d1a6e><h2 class=\"section-heading text-uppercase\" data-v-317d1a6e>Contactanos</h2><h3 class=\"section-subheading \" style=\"color:white;\" data-v-317d1a6e>POR FAVOR, LLENA ESTE FORMULARIO PARA PONERNOS EN CONTACTO CONTIGO.</h3></div><form id=\"contactForm\" name=\"sentMessage\" novalidate=\"novalidate\" data-v-317d1a6e><div class=\"row align-items-stretch mb-5\" data-v-317d1a6e><div class=\"col-md-6\" data-v-317d1a6e><div class=\"form-group\" data-v-317d1a6e><input class=\"form-control\" id=\"name\" type=\"text\" placeholder=\"Tu Nombre *\" required=\"required\" data-validation-required-message=\"Porfavor ingresa tu nombre\" data-v-317d1a6e><p class=\"help-block text-danger\" data-v-317d1a6e></p></div><div class=\"form-group\" data-v-317d1a6e><input class=\"form-control\" id=\"email\" type=\"email\" placeholder=\"Tu Email *\" required=\"required\" data-validation-required-message=\"Porfavor ingresa tu correo electronico.\" data-v-317d1a6e><p class=\"help-block text-danger\" data-v-317d1a6e></p></div><div class=\"form-group mb-md-0\" data-v-317d1a6e><input class=\"form-control\" id=\"phone\" type=\"tel\" placeholder=\"Tu  Telefono *\" required=\"required\" data-validation-required-message=\"Porfavor ingresa tu numero de telefono.\" data-v-317d1a6e><p class=\"help-block text-danger\" data-v-317d1a6e></p></div></div><div class=\"col-md-6\" data-v-317d1a6e><div class=\"form-group form-group-textarea mb-md-0\" data-v-317d1a6e><textarea class=\"form-control\" id=\"message\" placeholder=\"Tu Mensaje *\" required=\"required\" data-validation-required-message=\"Porfavor escribe tu mensaje.\" data-v-317d1a6e></textarea><p class=\"help-block text-danger\" data-v-317d1a6e></p></div></div></div><div class=\"text-center\" data-v-317d1a6e><div id=\"success\" data-v-317d1a6e></div><button class=\"btn btn-primary btn-xl text-uppercase\" id=\"sendMessageButton\" type=\"submit\" data-v-317d1a6e>Enviar mensaje</button></div></form></div></section>", 1);
-
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<footer class=\"footer py-4\" style=\"color:white;\" data-v-317d1a6e><div class=\"container\" data-v-317d1a6e><div class=\"row align-items-center\" data-v-317d1a6e><div class=\"col-lg-4 text-lg-left\" data-v-317d1a6e>Copyright © <span class=\"nombre \" data-v-317d1a6e>jtwo.tk</span> 2020-2021</div><div class=\"col-lg-4 my-3 my-lg-0\" data-v-317d1a6e><a class=\"btn btn-dark btn-social mx-2\" href=\"#!\" data-v-317d1a6e><i class=\"fab fa-twitter\" data-v-317d1a6e></i></a><a class=\"btn btn-dark btn-social mx-2\" href=\"#!\" data-v-317d1a6e><i class=\"fab fa-facebook-f\" data-v-317d1a6e></i></a><a class=\"btn btn-dark btn-social mx-2\" href=\"#!\" data-v-317d1a6e><i class=\"fab fa-linkedin-in\" data-v-317d1a6e></i></a></div><div class=\"col-lg-4 text-lg-right\" data-v-317d1a6e><a class=\"mr-3\" href=\"#!\" data-v-317d1a6e>Politicas</a><a href=\"#!\" data-v-317d1a6e>Terminos</a></div></div></div></footer>", 1);
+var _hoisted_20 = {
+  "class": "page-section",
+  id: "contact"
+};
+var _hoisted_21 = {
+  "class": "container"
+};
 
 var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "text-center"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", {
+  "class": "section-heading text-uppercase"
+}, "Contactános"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", {
+  "class": "section-subheading ",
+  style: {
+    "color": "white"
+  }
+}, "POR FAVOR, LLENA ESTE FORMULARIO PARA PONERNOS EN CONTACTO CONTIGO.")], -1
+/* HOISTED */
+);
+
+var _hoisted_23 = {
+  "class": "row align-items-stretch mb-5"
+};
+var _hoisted_24 = {
+  "class": "col-md-6"
+};
+var _hoisted_25 = {
+  "class": "form-group"
+};
+
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "help-block text-danger"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_27 = {
+  "class": "form-group"
+};
+
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "help-block text-danger"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_29 = {
+  "class": "form-group mb-md-0"
+};
+
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "help-block text-danger"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_31 = {
+  "class": "col-md-6"
+};
+var _hoisted_32 = {
+  "class": "form-group form-group-textarea mb-md-0"
+};
+
+var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "help-block text-danger"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_34 = {
+  "class": "text-center"
+};
+
+var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  id: "success"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_36 = {
+  key: 0,
+  "class": "lds-ripple"
+};
+
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_39 = {
+  key: 0,
+  "class": "ok"
+};
+var _hoisted_40 = {
+  key: 1,
+  "class": "ok"
+};
+var _hoisted_41 = {
+  style: {
+    "color": "red"
+  }
+};
+var _hoisted_42 = {
+  "class": "required"
+};
+
+var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "whatsapp-icon"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+  href: "https://api.whatsapp.com/send?phone=573212063928&text=¡Hola !",
+  target: "_blank"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+  "class": "fab fa-whatsapp"
+})])], -1
+/* HOISTED */
+);
+
+var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<footer class=\"footer py-4\" style=\"color:white;\" data-v-317d1a6e><div class=\"container\" data-v-317d1a6e><div class=\"row align-items-center\" data-v-317d1a6e><div class=\"col-lg-4 text-lg-left\" data-v-317d1a6e>Copyright © <span class=\"nombre \" data-v-317d1a6e>JTwoWeb.tk</span> 2020-2021</div><div class=\"col-lg-4 my-3 my-lg-0\" data-v-317d1a6e><a class=\"btn btn-dark btn-social mx-2\" href=\"#!\" data-v-317d1a6e><i class=\"fab fa-twitter\" data-v-317d1a6e></i></a><a class=\"btn btn-dark btn-social mx-2\" href=\"#!\" data-v-317d1a6e><i class=\"fab fa-facebook-f\" data-v-317d1a6e></i></a><a class=\"btn btn-dark btn-social mx-2\" href=\"#!\" data-v-317d1a6e><i class=\"fab fa-linkedin-in\" data-v-317d1a6e></i></a></div><div class=\"col-lg-4 text-lg-right\" data-v-317d1a6e><a class=\"mr-3\" href=\"#!\" data-v-317d1a6e>Politicas</a><a href=\"#!\" data-v-317d1a6e>Terminos</a></div></div></div></footer>", 1);
+
+var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "portfolio-modal modal fade",
   id: "portfolioModal1",
   tabindex: "-1",
@@ -22079,7 +22240,7 @@ var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "portfolio-modal modal fade",
   id: "portfolioModal2",
   tabindex: "-1",
@@ -22123,7 +22284,7 @@ var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
-var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "portfolio-modal modal fade",
   id: "portfolioModal3",
   tabindex: "-1",
@@ -22167,7 +22328,7 @@ var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_48 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "portfolio-modal modal fade",
   id: "portfolioModal4",
   tabindex: "-1",
@@ -22211,7 +22372,7 @@ var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
-var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_49 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "portfolio-modal modal fade",
   id: "portfolioModal5",
   tabindex: "-1",
@@ -22255,7 +22416,7 @@ var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
-var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "portfolio-modal modal fade",
   id: "portfolioModal6",
   tabindex: "-1",
@@ -22315,7 +22476,64 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
     _: 1
     /* STABLE */
 
-  })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Masthead"), _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Services"), _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Portfolio Grid"), _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" About"), _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Team"), _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Clients"), _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Contact"), _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Footer"), _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Portfolio Modals"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal 1"), _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal 2"), _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal 3"), _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal 4"), _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal 5"), _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal 6"), _hoisted_27], 64
+  })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Masthead"), _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Services"), _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Portfolio Grid"), _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" About"), _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Team"), _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Clients"), _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Contact"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    "class": "form-control",
+    id: "name",
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.name = $event;
+    }),
+    type: "text",
+    placeholder: "Tu Nombre *",
+    required: "required"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.name]]), _hoisted_26]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    "class": "form-control",
+    id: "email",
+    type: "email",
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $data.email = $event;
+    }),
+    placeholder: "Tu Email *",
+    required: "required"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.email]]), _hoisted_28]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    "class": "form-control",
+    id: "phone",
+    type: "text",
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $data.phone = $event;
+    }),
+    placeholder: "Tu  Telefono *",
+    required: "required"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.phone]]), _hoisted_30])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+    "class": "form-control",
+    id: "message",
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+      return $data.message = $event;
+    }),
+    rows: "5",
+    placeholder: "Tu Mensaje *",
+    required: "required"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.message]]), _hoisted_33])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_34, [_hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+    "class": "btn btn-primary btn-xl text-uppercase",
+    id: "btn-send",
+    onClick: _cache[5] || (_cache[5] = function () {
+      return $options.contact && $options.contact.apply($options, arguments);
+    }),
+    type: "submit"
+  }, "Enviar"), $data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_36, [_hoisted_37, _hoisted_38])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), $data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("p", _hoisted_39, "Enviando, espera...")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.sent ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("p", _hoisted_40, "Enviado, gracias por contactarte.")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.errors.errors, function (error) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("ul", _hoisted_41, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", _hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(error[0]), 1
+    /* TEXT */
+    )]);
+  }), 256
+  /* UNKEYED_FRAGMENT */
+  ))])]), _hoisted_43, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Footer"), _hoisted_44, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Portfolio Modals"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal 1"), _hoisted_45, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal 2"), _hoisted_46, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal 3"), _hoisted_47, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal 4"), _hoisted_48, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal 5"), _hoisted_49, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal 6"), _hoisted_50], 64
   /* STABLE_FRAGMENT */
   );
 });
@@ -22403,7 +22621,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.bg-gray-100[data-v-317d1a6e] {\r\n  background-color: #f7fafc;\r\n  background-color: rgba(247, 250, 252, var(--tw-bg-opacity));\n}\n.border-gray-200[data-v-317d1a6e] {\r\n  border-color: #edf2f7;\r\n  border-color: rgba(237, 242, 247, var(--tw-border-opacity));\n}\n.text-gray-400[data-v-317d1a6e] {\r\n  color: #cbd5e0;\r\n  color: rgba(203, 213, 224, var(--tw-text-opacity));\n}\n.text-gray-500[data-v-317d1a6e] {\r\n  color: #a0aec0;\r\n  color: rgba(160, 174, 192, var(--tw-text-opacity));\n}\n.text-gray-600[data-v-317d1a6e] {\r\n  color: #718096;\r\n  color: rgba(113, 128, 150, var(--tw-text-opacity));\n}\n.text-gray-700[data-v-317d1a6e] {\r\n  color: #4a5568;\r\n  color: rgba(74, 85, 104, var(--tw-text-opacity));\n}\n.text-gray-900[data-v-317d1a6e] {\r\n  color: #1a202c;\r\n  color: rgba(26, 32, 44, var(--tw-text-opacity));\n}\n@media (prefers-color-scheme: dark) {\n.dark\\:bg-gray-800[data-v-317d1a6e] {\r\n    background-color: #2d3748;\r\n    background-color: rgba(45, 55, 72, var(--tw-bg-opacity));\n}\n.dark\\:bg-gray-900[data-v-317d1a6e] {\r\n    background-color: #1a202c;\r\n    background-color: rgba(26, 32, 44, var(--tw-bg-opacity));\n}\n.dark\\:border-gray-700[data-v-317d1a6e] {\r\n    border-color: #4a5568;\r\n    border-color: rgba(74, 85, 104, var(--tw-border-opacity));\n}\n.dark\\:text-white[data-v-317d1a6e] {\r\n    color: #fff;\r\n    color: rgba(255, 255, 255, var(--tw-text-opacity));\n}\n.dark\\:text-gray-400[data-v-317d1a6e] {\r\n    color: #cbd5e0;\r\n    color: rgba(203, 213, 224, var(--tw-text-opacity));\n}\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.whatsapp-icon[data-v-317d1a6e]{\r\n    background: rgb(7, 223, 7);\r\n    position: fixed;\r\n    z-index: 99999999999;\r\n    bottom: 25px;\r\n    border-radius: 50%;\r\n    font-size: 2.4em;\r\n    padding: 4px 16px;\r\n    color: white;\r\n    right: 36px;\r\n    cursor: pointer;\n}\n.whatsapp-icon svg[data-v-317d1a6e]{\r\n    color: white;\n}\n.bg-gray-100[data-v-317d1a6e] {\r\n  background-color: #f7fafc;\r\n  background-color: rgba(247, 250, 252, var(--tw-bg-opacity));\n}\n.border-gray-200[data-v-317d1a6e] {\r\n  border-color: #edf2f7;\r\n  border-color: rgba(237, 242, 247, var(--tw-border-opacity));\n}\n.text-gray-400[data-v-317d1a6e] {\r\n  color: #cbd5e0;\r\n  color: rgba(203, 213, 224, var(--tw-text-opacity));\n}\n.text-gray-500[data-v-317d1a6e] {\r\n  color: #a0aec0;\r\n  color: rgba(160, 174, 192, var(--tw-text-opacity));\n}\n.text-gray-600[data-v-317d1a6e] {\r\n  color: #718096;\r\n  color: rgba(113, 128, 150, var(--tw-text-opacity));\n}\n.text-gray-700[data-v-317d1a6e] {\r\n  color: #4a5568;\r\n  color: rgba(74, 85, 104, var(--tw-text-opacity));\n}\n.text-gray-900[data-v-317d1a6e] {\r\n  color: #1a202c;\r\n  color: rgba(26, 32, 44, var(--tw-text-opacity));\n}\n@media (prefers-color-scheme: dark) {\n.dark\\:bg-gray-800[data-v-317d1a6e] {\r\n    background-color: #2d3748;\r\n    background-color: rgba(45, 55, 72, var(--tw-bg-opacity));\n}\n.dark\\:bg-gray-900[data-v-317d1a6e] {\r\n    background-color: #1a202c;\r\n    background-color: rgba(26, 32, 44, var(--tw-bg-opacity));\n}\n.dark\\:border-gray-700[data-v-317d1a6e] {\r\n    border-color: #4a5568;\r\n    border-color: rgba(74, 85, 104, var(--tw-border-opacity));\n}\n.dark\\:text-white[data-v-317d1a6e] {\r\n    color: #fff;\r\n    color: rgba(255, 255, 255, var(--tw-text-opacity));\n}\n.dark\\:text-gray-400[data-v-317d1a6e] {\r\n    color: #cbd5e0;\r\n    color: rgba(203, 213, 224, var(--tw-text-opacity));\n}\n}\n.ok[data-v-317d1a6e]{\r\n    color: rgb(0, 182, 0);\r\n    text-align: center;\n}\n.lds-ripple[data-v-317d1a6e] {\r\n  display: inline-block;\r\n  position: relative;\r\n  width: 40px;\r\n  height: 40px;\n}\n.lds-ripple div[data-v-317d1a6e] {\r\n  position: absolute;\r\n  border: 4px solid #fff;\r\n  opacity: 1;\r\n  border-radius: 50%;\r\n  -webkit-animation: lds-ripple-317d1a6e 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;\r\n          animation: lds-ripple-317d1a6e 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;\n}\n.lds-ripple div[data-v-317d1a6e]:nth-child(2) {\r\n  -webkit-animation-delay: -0.5s;\r\n          animation-delay: -0.5s;\n}\n@-webkit-keyframes lds-ripple-317d1a6e {\n0% {\r\n    top: 36px;\r\n    left: 36px;\r\n    width: 0;\r\n    height: 0;\r\n    opacity: 1;\n}\n100% {\r\n    top: 0px;\r\n    left: 0px;\r\n    width: 72px;\r\n    height: 72px;\r\n    opacity: 0;\n}\n}\n@keyframes lds-ripple-317d1a6e {\n0% {\r\n    top: 36px;\r\n    left: 36px;\r\n    width: 0;\r\n    height: 0;\r\n    opacity: 1;\n}\n100% {\r\n    top: 0px;\r\n    left: 0px;\r\n    width: 72px;\r\n    height: 72px;\r\n    opacity: 0;\n}\n}\r\n\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
