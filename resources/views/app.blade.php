@@ -9,6 +9,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Font Awesome icons (free version)-->
+
+
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
@@ -18,13 +20,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{asset('/assets_main/css/styles.css')}}" rel="stylesheet" />
 
-  
-
-    
-
-
-
-    <!-- Scripts -->
+ 
     @routes
 
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -36,7 +32,11 @@
 </body>
 <script src="{{ asset('admin_assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('admin_assets/js/jquery-ui.min.js') }}"></script>
-
+<script>
+    $.widget.bridge('uibutton', $.ui.button)
+</script>
+<script src="{{ asset('admin_assets/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('admin_assets/js/adminlte.js') }}"></script>
 <!-- Bootstrap core JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>

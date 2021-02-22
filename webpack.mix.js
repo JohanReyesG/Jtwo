@@ -18,6 +18,8 @@ mix.js('resources/js/app.js', 'public/js').vue()
         require('autoprefixer'),
     ])
     .webpackConfig(require('./webpack.config'));
+    
+mix.copy('resources/routes.php', 'vendor/laravel/fortify/routes/routes.php');
 
 // if (mix.inProduction()) {
 //     mix.version();

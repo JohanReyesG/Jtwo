@@ -1,5 +1,7 @@
 <template>
     <jet-authentication-card>
+    <link href="../../../css/app.css" rel="stylesheet" />
+
         <template #logo>
             <jet-authentication-card-logo />
         </template>
@@ -90,3 +92,4 @@
         }
     }
 </script>
+
