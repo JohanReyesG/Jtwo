@@ -2,10 +2,10 @@
   <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                    <img src="assets_main/img/logo.png" alt="" style="width: 5%;height: 5%" />
+                <a class="navbar-brand js-scroll-trigger" href="#page-top" style="width: 150px;">
+                    <img src="assets_main/img/logo.png" alt="" style="width: 20%;height: 20%" />
                     <span class="nombre">
-                        jtwo.tk 
+                        jtwoweb
                     </span> 
                         
                 </a>
@@ -41,43 +41,15 @@
                             </a>
                         </li>
 
-                        
-
-                          <li class="nav-item">
-                              <inertia-link
-                                v-if="$page.props.user"
-                                href="/dashboard"
-                                class="nav-link btn-secondary  btn-sm text-uppercase"
-                              >
-                                Dashboard:{{canLogin}}
-                              </inertia-link>
-                          </li>
-                    
-                          <li class="nav-item">
-                              <inertia-link
-                                v-if="!$page.props.user"
-                                :href="route('register')"
-                                class="nav-link btn-primary btn-sm text-uppercase"
-                              >
-                                Registrarse
-                              </inertia-link>
-                          </li>
-
-                          <li class="nav-item">
-                              
-                              <inertia-link
-                                v-if="!$page.props.user"
-                                :href="route('login')"
-                                class="btn btn-success btn-sm text-uppercase"
-                              >
-                                Login
-                              </inertia-link>
-                          </li>
-                     
-
-
-
-
+                        <li class="nav-item">
+                          <inertia-link
+                            v-if="$page.props.user"
+                            href="/dashboard"
+                            class="nav-link btn-primary  btn-sm text-uppercase"
+                          >
+                            Dashboard
+                          </inertia-link>
+                        </li>
                         
                     </ul>
                 </div>
@@ -107,8 +79,8 @@
         <section class="page-section" id="services">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Services</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading text-uppercase" style="color: white;">Servicios</h2>
+                    <h3 class="section-subheading text-muted">Estos son algunos de nuestros servicios</h3>
                 </div>
                 <div class="row text-center">
                     <div class="col-md-4">
@@ -142,7 +114,7 @@
         <section class="page-section bg-light" id="portfolio">
             <div class="container">
                 <div class="text-center" style="color: black">
-                    <h2 class="section-heading text-uppercase">Portfolio</h2>
+                    <h2 class="section-heading text-uppercase">Tecnologías, Herramientas y lenguajes utilizados</h2>
                     <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
                 <div class="row">
@@ -237,7 +209,7 @@
         <section class="page-section" id="about">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Conocenos</h2>
+                    <h2 class="section-heading text-uppercase" style="color: white">Conocenos</h2>
                     <h3 class="section-subheading text-muted" style="color: white">El recorrido de nuestra historia.</h3>
                 </div>
                 <ul class="timeline">
@@ -245,8 +217,8 @@
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets_main/img/about/1.jpg" alt="" /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>2009-2011</h4>
-                                <h4 class="subheading">Our Humble Beginnings</h4>
+                                <h4>20018-2020</h4>
+                                <h4 class="subheading">Tiempo de formacion</h4>
                             </div>
                             <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
                         </div>
@@ -303,17 +275,19 @@
                     <h3 class="section-subheading text-muted">Apasinados por lo que hacemos.</h3>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets_main/img/team/2.jpg" alt="" />
+                            <img class="mx-auto rounded-circle" src="assets_main/img/team/2.png" alt="" />
                             <h4 style="color: black">Johan Reyes</h4>
                             <p class="text-muted">Ingeniero de sistemas</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://github.com/JohanReyesG" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <!-- <div class="col-lg-4">
                         <div class="team-member">
                             <img class="mx-auto rounded-circle" src="assets_main/img/team/1.jpg" alt="" />
                             <h4 style="color: black">Lady Avila</h4>
@@ -322,15 +296,21 @@
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
+                    </div> -->
+                    <div class="col-lg-6">
                         <div class="team-member">
                             <img class="mx-auto rounded-circle" src="assets_main/img/team/Johann.jpg" alt="" />
                             <h4 style="color: black">Johann Ramirez</h4>
                             <p class="text-muted">Ingeniero de software</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://github.com/johannDevFull" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://m.facebook.com/profile.php?id=100000306092078" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -362,43 +342,43 @@
         <section class="page-section" id="contact">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Contact Us</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading text-uppercase">Contactanos</h2>
+                    <h3 class="section-subheading " style="color: white;">POR FAVOR, LLENA ESTE FORMULARIO PARA PONERNOS EN CONTACTO CONTIGO.</h3>
                 </div>
                 <form id="contactForm" name="sentMessage" novalidate="novalidate">
                     <div class="row align-items-stretch mb-5">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input class="form-control" id="name" type="text" placeholder="Your Name *" required="required" data-validation-required-message="Please enter your name." />
+                                <input class="form-control" id="name" type="text" placeholder="Tu Nombre *" required="required" data-validation-required-message="Porfavor ingresa tu nombre" />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" id="email" type="email" placeholder="Your Email *" required="required" data-validation-required-message="Please enter your email address." />
+                                <input class="form-control" id="email" type="email" placeholder="Tu Email *" required="required" data-validation-required-message="Porfavor ingresa tu correo electronico." />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="form-group mb-md-0">
-                                <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" required="required" data-validation-required-message="Please enter your phone number." />
+                                <input class="form-control" id="phone" type="tel" placeholder="Tu  Telefono *" required="required" data-validation-required-message="Porfavor ingresa tu numero de telefono." />
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group form-group-textarea mb-md-0">
-                                <textarea class="form-control" id="message" placeholder="Your Message *" required="required" data-validation-required-message="Please enter a message."></textarea>
+                                <textarea class="form-control" id="message" placeholder="Tu Mensaje *" required="required" data-validation-required-message="Porfavor escribe tu mensaje."></textarea>
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                     </div>
                     <div class="text-center">
                         <div id="success"></div>
-                        <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Send Message</button>
+                        <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Enviar mensaje</button>
                     </div>
                 </form>
             </div>
         </section>
         <!-- Footer-->
-        <footer class="footer py-4">
+        <footer class="footer py-4" style="color:white;">
             <div class="container">
-                <div class="row align-items-center">
+                <div class="row align-items-center" >
                     <div class="col-lg-4 text-lg-left">Copyright © <span class="nombre ">jtwo.tk</span> 2020-2021</div>
                     <div class="col-lg-4 my-3 my-lg-0">
                         <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
@@ -406,8 +386,8 @@
                         <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                     <div class="col-lg-4 text-lg-right">
-                        <a class="mr-3" href="#!">Privacy Policy</a>
-                        <a href="#!">Terms of Use</a>
+                        <a class="mr-3" href="#!">Politicas</a>
+                        <a href="#!">Terminos</a>
                     </div>
                 </div>
             </div>

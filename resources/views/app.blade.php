@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="icon" type="image/x-icon" href="assets_main/img/logo.ico" />
 
     <!-- Font Awesome icons (free version)-->
 
@@ -20,17 +21,19 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{asset('/assets_main/css/styles.css')}}" rel="stylesheet" />
 
- 
+    <!-- Scripts -->
+
     @routes
 
     <script src="{{ asset('js/app.js') }}" defer></script>
 
 </head>
 
-<body class="sidebar-mini sidebar-collapse">
+<body id="page-top" class="sidebar-mini sidebar-collapse">
     @inertia
 </body>
-<script src="{{ asset('admin_assets/js/jquery.min.js') }}"></script>
+<!-- <script src="{{ asset('admin_assets/js/jquery.min.js') }}"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{{ asset('admin_assets/js/jquery-ui.min.js') }}"></script>
 <script>
     $.widget.bridge('uibutton', $.ui.button)
@@ -38,10 +41,10 @@
 <script src="{{ asset('admin_assets/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('admin_assets/js/adminlte.js') }}"></script>
 <!-- Bootstrap core JS-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Third party plugin JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
 
 <!-- Contact form JS-->
 <script src="{{asset('/assets_main/mail/jqBootstrapValidation.js') }}"></script>

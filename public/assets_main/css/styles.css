@@ -64,9 +64,9 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #fff;
+  color: black;
   text-align: left;
-  background-color: #424242;
+  background-color: #111;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -380,6 +380,7 @@ h3, .h3 {
 
 h4, .h4 {
   font-size: 1.5rem;
+  color: white;
 }
 
 h5, .h5 {
@@ -7718,7 +7719,7 @@ button.bg-dark:focus {
 
 .pt-4,
 .py-4 {
-  padding-top: 1.5rem !important;
+  padding-top: 0.5rem !important;
 }
 
 .pr-4,
@@ -7728,7 +7729,7 @@ button.bg-dark:focus {
 
 .pb-4,
 .py-4 {
-  padding-bottom: 1.5rem !important;
+  padding-bottom: 0.5rem !important;
 }
 
 .pl-4,
@@ -10046,8 +10047,8 @@ img::-moz-selection {
 }
 
 #mainNav {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   background-color: #212529;
 }
 #mainNav .navbar-toggler {
@@ -10084,7 +10085,7 @@ img::-moz-selection {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     border: none;
-    background-color: #212529;
+    background-color: transparent;
     transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
   }
   #mainNav .navbar-brand {
@@ -10096,8 +10097,8 @@ img::-moz-selection {
     transition: height 0.3s ease-in-out;
   }
   #mainNav.navbar-shrink {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
     background-color: #424242;
     border-bottom: white solid 1px;
   }
@@ -10108,7 +10109,9 @@ img::-moz-selection {
 #mainNav.navbar-shrink .navbar-brand img {
     height: 1.5rem;
   }
-  
+  #mainNav .navbar-nav .nav-item {
+    margin-right: 1rem;
+  }
   #mainNav .navbar-nav .nav-item:last-child {
     margin-right: 0;
   }
@@ -10123,6 +10126,10 @@ header.masthead {
   padding-bottom: 6rem;
   text-align: center;
   color: #fff;
+  background: #333333;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #dd1818, #333333);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #dd1818, #333333); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -10331,7 +10338,6 @@ header.masthead .masthead-heading {
 }
 .timeline .timeline-heading h4 {
   margin-top: 0;
-  color: inherit;
 }
 .timeline .timeline-heading h4.subheading {
   text-transform: none;
